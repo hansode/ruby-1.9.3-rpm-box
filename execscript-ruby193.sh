@@ -12,10 +12,11 @@ echo "doing execscript.sh: $1"
 ## root
 
 chroot $1 $SHELL <<'EOS'
+yum install -y \
+ git make
+
 rpm -ivh http://dlc.wakame.axsh.jp.s3-website-us-east-1.amazonaws.com/epel-release
 
-yum install -y \
- bash git make
 yum install -y \
  gcc gcc-c++ make automake autoconf \
  readline-devel ncurses-devel gdbm-devel glibc-devel tcl-devel openssl-devel db4-devel byacc libyaml-devel \
