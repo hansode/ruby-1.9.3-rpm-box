@@ -15,7 +15,7 @@ chroot $1 $SHELL <<'EOS'
 rpm -ivh http://dlc.wakame.axsh.jp.s3-website-us-east-1.amazonaws.com/epel-release
 
 yum install -y \
- git make
+ bash git make
 yum install -y \
  gcc gcc-c++ make automake autoconf \
  readline-devel ncurses-devel gdbm-devel glibc-devel tcl-devel openssl-devel db4-devel byacc libyaml-devel \
