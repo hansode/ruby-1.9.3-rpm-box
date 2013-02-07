@@ -12,6 +12,8 @@ echo "doing execscript.sh: $1"
 ## root
 
 chroot $1 $SHELL <<'EOS'
+yum repolist
+
 curl -fsSkL http://dlc.wakame.axsh.jp.s3-website-us-east-1.amazonaws.com/epel-release -o epel-release.rpm
 yum install -y epel-release.rpm
 
