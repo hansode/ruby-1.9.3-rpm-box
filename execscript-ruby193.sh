@@ -13,7 +13,9 @@ echo "doing execscript.sh: $1"
 
 chroot $1 $SHELL <<'EOS'
 yum repolist
+EOS
 
+chroot $1 $SHELL <<'EOS'
 curl -fsSkL http://dlc.wakame.axsh.jp.s3-website-us-east-1.amazonaws.com/epel-release -o epel-release.rpm
 yum install -y epel-release.rpm
 
@@ -34,7 +36,7 @@ devel_user=ruby193
 chroot $1 su - ${devel_user} <<'EOS'
 whoami
 
-git clone https://github.com/cv/ruby-1.9.3-rpm.git /tmp/ruby-1.9.3-rpm
+git clone https://github.com/hansode/ruby-1.9.3-rpm.git /tmp/ruby-1.9.3-rpm
 rubyminorver=$(egrep "^%define rubyminorver" /tmp/ruby-1.9.3-rpm/ruby193.spec | awk '{print $3}')
 
 cd
