@@ -12,26 +12,10 @@ echo "doing execscript.sh: $1"
 ## root
 
 chroot $1 $SHELL <<'EOS'
-yum repolist
-EOS
-
-chroot $1 $SHELL <<'EOS'
-curl -fsSkL http://dlc.wakame.axsh.jp.s3-website-us-east-1.amazonaws.com/epel-release -o epel-release.rpm
-yum install -y epel-release.rpm
-
-yum install -y \
- git make
-yum install -y \
- gcc gcc-c++ make automake autoconf \
- readline-devel ncurses-devel gdbm-devel glibc-devel tcl-devel openssl-devel db4-devel byacc libyaml-devel \
- rpm-build rpmdevtools \
- readline-devel ncurses-devel openssl-devel libxml2-devel libxslt-devel gdbm-devel zlib-devel \
- libffi-devel
+yum install -y libyaml-devel
 EOS
 
 ## normal user
-
-devel_user=ruby193
 
 chroot $1 su - ${devel_user} <<'EOS'
 whoami
