@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 all:
 	git submodule update --init --recursive
 
@@ -5,15 +7,12 @@ test: common
 
 common:
 	time sudo ./vmbuilder/kvm/rhel/6/vmbuilder.sh \
-	--config-path ./vmbuilder.conf \
-	--distro-arch `arch`
+	--config-path ./vmbuilder.conf
 
 i686:
-	time sudo ./vmbuilder/kvm/rhel/6/vmbuilder.sh \
-	--config-path ./vmbuilder.conf \
-	--distro-arch $@
+	time sudo setarch $@ ./vmbuilder/kvm/rhel/6/vmbuilder.sh \
+	--config-path ./vmbuilder.conf
 
 x86_64:
-	time sudo ./vmbuilder/kvm/rhel/6/vmbuilder.sh \
-	--config-path ./vmbuilder.conf \
-	--distro-arch $@
+	time sudo setarch $@ ./vmbuilder/kvm/rhel/6/vmbuilder.sh \
+	--config-path ./vmbuilder.conf
