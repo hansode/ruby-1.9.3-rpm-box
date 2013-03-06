@@ -12,6 +12,7 @@ echo "doing execscript.sh: $1"
 ## root
 
 chroot $1 $SHELL <<'EOS'
+rpm -Uvh http://dlc.wakame.axsh.jp.s3-website-us-east-1.amazonaws.com/epel-release
 yum install -y libyaml-devel
 EOS
 
