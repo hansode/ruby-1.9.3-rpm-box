@@ -2,6 +2,8 @@ SHELL=/bin/bash
 
 all:
 	git submodule update --init --recursive
+update:
+	git submodule foreach git pull origin master
 
 test: common
 
