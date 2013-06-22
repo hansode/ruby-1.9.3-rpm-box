@@ -35,9 +35,9 @@ chroot $1 su - ${devel_user} <<'EOS'
   rpmbuild -bb ~/rpmbuild/SPECS/ruby193.spec
 EOS
 
+## root
+
 chroot $1 $SHELL <<EOS
   rpm -ivh /home/${devel_user}/rpmbuild/RPMS/*/ruby-1.9.3p*.rpm
   gem install bundler --no-rdoc --no-ri
 EOS
-
-rsync -avx  ${1}/home/${devel_user}/rpmbuild/RPMS/*/ruby-1.9.3p*.rpm ./.
