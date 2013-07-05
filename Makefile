@@ -5,6 +5,8 @@ all:
 update:
 	git submodule foreach git pull origin master
 
+box: test
+
 test: common
 
 common:
